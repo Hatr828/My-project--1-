@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI rpmText;
     [SerializeField] List<WheelCollider> allWheels;
     [SerializeField] int wheelsOnGround;
+    private bool isGameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,17 @@ public class PlayerController : MonoBehaviour
     // Fixed Update can be called zero, once or more per frame (interval is determined by the physics timestep setings)
     void FixedUpdate()
     {
+        if (!isGameOver && transform.position.y < -10f)
+        {
+            isGameOver = true;
+            PrototypeHUD.ShowGameOver();
+        }
+
+        if (isGameOver)
+        {
+            return;
+        }
+
         // get keyboard input
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");

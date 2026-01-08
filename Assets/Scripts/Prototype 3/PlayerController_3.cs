@@ -60,6 +60,7 @@ public class PlayerController_3 : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameOver = true;
+            PrototypeHUD.ShowGameOver();
 
             // play death animation
             playerAnim.SetBool("Death_b", true);

@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
         isGameActive = false;
+        PrototypeHUD.ShowGameOver();
     }
 
     public void RestartGame()

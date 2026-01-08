@@ -10,6 +10,7 @@ public class PlayerController_4 : MonoBehaviour
     public float speed = 5.0f;
     public bool hasPowerup = false;
     public GameObject powerupIndicator;
+    private bool isGameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,17 @@ public class PlayerController_4 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isGameOver && transform.position.y < -10f)
+        {
+            isGameOver = true;
+            PrototypeHUD.ShowGameOver();
+        }
+
+        if (isGameOver)
+        {
+            return;
+        }
+
         // move player in the forward direction of focal point
         float forwardInput = Input.GetAxis("Vertical");
         playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
